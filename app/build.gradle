@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "net.k1ra.orderfulfill"
+        minSdk 29
+        targetSdk 33
+        versionCode 1
+        versionName "1.0.0"
+
+        //BuildConfig fields for app secrets
+        buildConfigField "String", 'EBAY_CLIENT_ID', '"'+System.getenv("EBAY_CLIENT_ID")+'"'
+        buildConfigField "String", 'EBAY_CLIENT_SECRET', '"'+System.getenv("EBAY_CLIENT_SECRET")+'"'
+        buildConfigField "String", 'EBAY_BASE_URL', '"'+System.getenv("EBAY_BASE_URL")+'"'
+        buildConfigField "String", 'EBAY_RU_NAME', '"'+System.getenv("EBAY_RU_NAME")+'"'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation "com.gap.androidlibraries:hoodies-networkandroid:1.0.5"
+
+    implementation(files("libs/ZSDK_API.jar"))
+
+    //Room
+    implementation 'androidx.room:room-runtime:2.5.0'
+    annotationProcessor 'androidx.room:room-compiler:2.5.0'
+    kapt("androidx.room:room-compiler:2.5.0")
+
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'net.gcardone.junidecode:junidecode:0.4.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="net.k1ra.orderfulfill.fragments.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_pendingOrderFragment"
+            app:destination="@id/pendingOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pendingOrderFragment"
+        android:name="net.k1ra.orderfulfill.feature.orders.ui.PlatformPendingOrderFragment"
+        android:label="ebay_fragment"
+        tools:layout="@layout/platform_pending_order_fragment" />
+</navigation>

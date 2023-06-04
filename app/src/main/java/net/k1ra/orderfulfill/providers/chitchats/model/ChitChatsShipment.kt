@@ -1,0 +1,33 @@
+package net.k1ra.orderfulfill.providers.chitchats.model
+
+class ChitChatsShipment(
+    val name: String,
+    val address_1: String,
+    val address_2: String,
+    val city: String,
+    val province_code: String,
+    val postal_code: String,
+    val country_code: String,
+    val phone: String,
+    val package_contents: String = "merchandise",
+    val description: String,
+    val value: Float,
+    val value_currency: String = "usd",
+    val order_id: String = "",
+    val order_store: String = "",
+    val package_type: String,
+    val weight_unit: String = "g",
+    val weight: Int,
+    val size_unit: String = "cm",
+    val size_x: Float,
+    val size_y: Float,
+    val size_z: Float,
+    val insurance_requested: Boolean = true,
+    val signature_requested: Boolean = false,
+    val vat_reference: String = "",
+    val duties_paid_requested: Boolean = false,
+    val postage_type: String = "unknown",
+    val cheapest_postage_type_requested: String = "no",
+    val tracking_number: String = "",
+    val ship_date: String = "today"
+)
